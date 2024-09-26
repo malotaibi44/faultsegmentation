@@ -9,9 +9,9 @@ _c.print_freq = 2
 
 _c.dataset = cn()
 #the folder for the masks labels (under it should be folders for each novice/practitioner, and the expert)
-_c.dataset.root = '/home/hice1/malotaibi44/scratch/segformer/Fault segmentations'
+_c.dataset.root = 'Fault segmentations'
 #folder of images but not used, 
-_c.dataset.data_path =  '/home/hice1/malotaibi44/scratch/segformer/NeurIPS2024_SegFaults-main/images/images'
+_c.dataset.data_path =  'images'
 _c.dataset.datalist = ''
 _c.dataset.annot_groups = os.listdir('Fault segmentations')[1:]
 _c.dataset.labelset = 'certain-uncertain'
