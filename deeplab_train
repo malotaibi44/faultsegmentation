@@ -77,14 +77,14 @@ import numpy as np
 import os
 import torch
 from torch.utils.data import DataLoader
-fp=fp='/home/hice1/malotaibi44/scratch/segformer'
+fp='/home/hice1/malotaibi44/scratch/segformer'
 from cfg import _c as cfg
 from f3sec import F3Sec
 def make_dataset(cfg,subset, classannot):
     # get the train/test lists.
     
-    trainlist_path = os.path.join(fp,'train.txt')
-    testlist_path = os.path.join(fp,'test.txt')
+    trainlist_path = os.path.join('train.txt')
+    testlist_path = os.path.join('test.txt')
 
     with open(trainlist_path, "r") as f:
         trainlist = f.read().split('\n')[:-1]
@@ -94,7 +94,7 @@ def make_dataset(cfg,subset, classannot):
         testlist = f.read().split('\n')[:-1]
     #testlist = [int(l) for l in testlist]
     if subset=='train':
-        dataset = F3Sec(cfg, trainlist, fp+'/train_a',classannot)
+        dataset = F3Sec(cfg, trainlist, '/train_a',classannot)
     else:
         dataset = F3Sec(cfg, testlist, 'test',classannot) 
     # img,lbl=dataset.__getitem__(0)
