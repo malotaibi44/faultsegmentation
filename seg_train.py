@@ -40,33 +40,33 @@ class f3Sec(Dataset):
                 if not group =='expert':
                     for i,img in enumerate(datalist):
                         
-                        #print(os.path.join(fp,'NeurIPS2024_SegFaults-main/images/images/',img))
-                        if os.path.exists(os.path.join(fp,'Fault segmentations',group,img)) and os.path.exists(os.path.join(fp,'NeurIPS2024_SegFaults-main/images/images/',img)):
-                            self.train.append(os.path.join(fp,'NeurIPS2024_SegFaults-main/images/images/',img))
-                            self.lbls.append(os.path.join(fp,'Fault segmentations',group,img))
+                        #print(os.path.join('images/',img))
+                        if os.path.exists(os.path.join('Fault segmentations',group,img)) and os.path.exists(os.path.join('images/',img)):
+                            self.train.append(os.path.join('images/',img))
+                            self.lbls.append(os.path.join('Fault segmentations',group,img))
                 else:
-                    lst=os.listdir(os.path.join(fp,cfg.dataset.root,group))
+                    lst=os.listdir(os.path.join(cfg.dataset.root,group))
                     for img in lst:
-                        self.train.append(os.path.join(fp,'segmented_images',img))
-                        self.lbls.append(os.path.join(fp,cfg.dataset.root,group,img))
+                        self.train.append(os.path.join('segmented_images',img))
+                        self.lbls.append(os.path.join(cfg.dataset.root,group,img))
         else: # for test set 
             for group in grps:
                 if any(label in group for label in classlabel) : # check if the annotator in the test class 
                     if not group =='expert':
                         for i,img in enumerate(datalist):
                             
-                            if os.path.exists(os.path.join(fp,cfg.dataset.root,group,img)):
-                                self.lbls.append(os.path.join(fp,cfg.dataset.root,group,img))
-                                self.train.append(os.path.join(fp,'NeurIPS2024_SegFaults-main/images/images/',img))
+                            if os.path.exists(os.path.join(cfg.dataset.root,group,img)):
+                                self.lbls.append(os.path.join(cfg.dataset.root,group,img))
+                                self.train.append(os.path.join('images/',img))
                     else:
-                        train=os.listdir(os.path.join(fp,'Fault segmentations',group))
-                        test=os.listdir(os.path.join(fp,'expert'))
-                        print(os.path.join(fp,'expert'))
+                        train=os.listdir(os.path.join('Fault segmentations',group))
+                        test=os.listdir(os.path.join('expert'))
+                        print(os.path.join('expert'))
                         for img in test:
                             if not img in train:
-                                if os.path.exists(os.path.join(fp,'NeurIPS2024_SegFaults-main/images/images/',img)):
-                                    self.train.append(os.path.join(fp,'NeurIPS2024_SegFaults-main/images/images/',img))
-                                    self.lbls.append(os.path.join(fp,'expert',img))
+                                if os.path.exists(os.path.join('images/',img)):
+                                    self.train.append(os.path.join('images/',img))
+                                    self.lbls.append(os.path.join('expert',img))
         #print("fn",len(self.lbls))
     def _get_singleannot_label(self, labels_path):
         label_rgb_array = np.asarray(Image.open(labels_path).convert('RGB'))
@@ -132,8 +132,8 @@ fp='/home/hice1/malotaibi44/scratch/segformer'
 def make_dataset(cfg,subset, classannot):
     # get the train/test lists.
     
-    trainlist_path = os.path.join(fp,'train.txt')
-    testlist_path = os.path.join(fp,'test.txt')
+    trainlist_path = os.path.join('train.txt')
+    testlist_path = os.path.join('test.txt')
     with open(trainlist_path, "r") as f:
         trainlist = f.read().split('\n')[:-1]
     #trainlist = [int(l) for l in trainlist]
