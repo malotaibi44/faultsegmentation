@@ -1,3 +1,5 @@
+for unet++ trianing file you can jsut load unet rather than unet++ without any modification on the code 
+
 have this file structure
 ```
 Fault_Segmentations/
