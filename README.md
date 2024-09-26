@@ -1,4 +1,4 @@
-for unet++ trianing file you can jsut load unet rather than unet++ without any modification on the code 
+if you want to train unet rather than unet++ trianing file you can jsut load unet rather than unet++ without any modification on the code 
 
 have this file structure
 ```
