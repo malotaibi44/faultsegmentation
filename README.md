@@ -1,3 +1,4 @@
+have this file structure
 ```
 Fault_Segmentations/
 │
