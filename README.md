@@ -1,3 +1,4 @@
+```
 Fault_Segmentations/
 │
 ├── expert/                  # Expert annotations
@@ -17,3 +18,4 @@ Fault_Segmentations/
  
  images/                  # All segmentation images
     └── ...                  # Files related to all images
+```
